@@ -92,7 +92,7 @@ const Navbar = () => {
         <Logo>Shopping Cart.</Logo>
       </Center>
       <Right>
-        <MenuItem><Link to="/register">REGISTER</Link></MenuItem>
+        
         <MenuItem><Link to="/login">SIGN IN</Link></MenuItem>
       </Right>
     </Wrapper>
