@@ -4,9 +4,9 @@ import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link} from "react-router-dom";
-/*import Register from "./Register";
+//import Register from "./Register";
 //import Login from "./Login";
-import Home from "./Home";
+/*import Home from "./Home";
 import LoginJson from "./LoginJson";
 //import LoginAuth from "./LoginAuth";
 import ProductList from "./ProductList";
@@ -92,7 +92,7 @@ const Navbar = () => {
         <Logo>Shopping Cart.</Logo>
       </Center>
       <Right>
-        
+      <MenuItem><Link to="/register">REGISTER</Link></MenuItem>
         <MenuItem><Link to="/login">SIGN IN</Link></MenuItem>
       </Right>
     </Wrapper>

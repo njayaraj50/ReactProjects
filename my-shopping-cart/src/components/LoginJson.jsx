@@ -4,7 +4,7 @@ import { mobile } from "../responsive";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 //import ProductList from "./ProductList";*/
-
+import Authentication from "../storage/Authentication";
 import Announcement from "./Announcement";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -58,15 +58,13 @@ const Button = styled.button`
   margin-bottom: 10px;
 `;
 
-
-
 const LoginJson = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   // ...
   const loginFunction = async (username, password) => {
-    await fetch('http://localhost:8080/api/login/checklogin?username='+username+"&password="+password, {
+    await fetch('http://localhost:8080/api/login/checklogin?username=' + username + "&password=" + password, {
       method: 'GET',
       /*body: JSON.stringify({
        /* username: username,
@@ -81,7 +79,8 @@ const LoginJson = () => {
       .then((data) => {
         console.log(data);
         console.log(data.username);
-        getUserId(data);
+        console.log(data.id);
+        Authentication.registerSuccessfulLogin(data.id);
         setLogin((loginData) => [data, ...loginData]);
         setUsername('');
         setPassword('');
@@ -90,13 +89,15 @@ const LoginJson = () => {
         console.log(err.message);
       });
   };
+  /*const cart = useSelector((state) => state.cart);
   const getUserId = (data) => {
     console.log(data);
-    localStorage.setItem(data.email, JSON.stringify({ 
+    localStorage.setItem(data, JSON.stringify({ 
         id: data.id, 
     }));
-    console.log(JSON.parse(localStorage.getItem(data.email)));
+    console.log(JSON.parse(localStorage.getItem(data)));
   };
+  */
   const navigate = useNavigate();
   const [login, setLogin] = useState([]);
   if ((login.some(user => user.username === username.valueOf())) && (login.some(pass => pass.password === password.valueOf()))) {
@@ -107,7 +108,7 @@ const LoginJson = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     loginFunction(username, password);
-    
+
   };
   return (
     <>

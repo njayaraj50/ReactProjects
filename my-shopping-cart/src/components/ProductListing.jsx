@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../redux/actions/productActions";
 import ProductComponent from "./ProductComponent";
+import Footer from "./Footer";
 //import Navbar from "./Navbar/Navbar";
 const ProductPage = () => {
   const products = useSelector((state) => state.allProducts.products);
@@ -25,9 +26,11 @@ const ProductPage = () => {
   console.log("Products :", products);
   return (
     <>
-      <div className="ui grid container">
+      <div className="ui grid container list">
         <ProductComponent />
       </div>
+      <div><br></br></div>
+      <Footer/>
     </>
 
   );

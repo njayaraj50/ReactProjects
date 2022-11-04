@@ -5,7 +5,7 @@ import Header from "./Header";
 import { useEffect } from "react";
 //import { useNavigate } from "react-router";
 import { addToCart, getTotals, } from "../slices/cartSlice";
-
+//import Footer from "./Footer";
 
 const ProductComponent = () => {
   //const { items: products, status } = useSelector((state) => state.products);
@@ -51,6 +51,7 @@ console.log(cart);
                 <div className="header">{product.title}</div>
                 <div className="meta price">$ {product.price}</div>
                 <div className="meta">{product.category}</div>
+                
               </div>
             </div>
 
@@ -71,7 +72,9 @@ console.log(cart);
   });
   return <>
     <Header />
-    {renderList}</>;
+    {renderList}
+    
+    </>;
 };
 
 export default ProductComponent;

@@ -4,10 +4,18 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedProduct, removeSelectedProduct, } from "../redux/actions/productActions";
 import Header from "./Header";
-import { useNavigate } from "react-router";
-import { addToCart } from "../slices/cartSlice";
+//import { useNavigate } from "react-router";
 import styled from "styled-components";
-
+import { addToCart, getTotals, } from "../slices/cartSlice";
+import Footer from "./Footer";
+/*const Container = styled.div`
+  height: 60vh;
+  background-color: #fcf5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;*/
 const Center = styled.div`
   flex: 1;
   text-align: center;
@@ -17,7 +25,12 @@ const ProductDetails = () => {
   let product = useSelector((state) => state.product);
   //const { image, title, price, category, description } = product;
   const dispatch = useDispatch();
-  
+  const cart = useSelector((state) => state.cart);
+
+  useEffect(() => {
+    dispatch(getTotals());
+  }, [cart, dispatch]);
+console.log(cart);
 
   const fetchProductDetail = async (id) => {
     const response = await axios
@@ -29,12 +42,12 @@ const ProductDetails = () => {
     dispatch(selectedProduct(response.data));
   };
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
     console.log(product);
-    navigate("/addcart");
+    //navigate("/addcart");
     
   };
   useEffect(() => {
@@ -82,6 +95,7 @@ const ProductDetails = () => {
           </div>
         )}
       </div>
+      <Footer /> 
     </>
   );
 };

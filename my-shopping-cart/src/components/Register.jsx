@@ -4,6 +4,10 @@ import { useForm } from "react-hook-form";
 import Announcement from "./Announcement";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+//import Authentication from "../storage/Authentication";
+import axios from "axios";
+//import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -61,14 +65,25 @@ const Button = styled.button`
 const Register = () => {
   const {register, handleSubmit, formState: { errors } } = useForm();
 
+ const navigate =useNavigate();
+  const onSubmit = async(data) => {
  
-  const onSubmit = (data) => {
-    console.log(data);
-    localStorage.setItem(data.email, JSON.stringify({ 
-        name: data.username, password: data.password 
-    }));
-    console.log(JSON.parse(localStorage.getItem(data.email)));
-  };
+     const response = await axios
+      .post('http://localhost:8080/api/login/register',data)
+      .then(res => res.json())
+      .catch((err) => {
+        console.log("Err: ", err);
+      });
+      
+      console.log(response);
+ 
+    navigate('/login');
+  
+ 
+  } 
+  
+    
+
   return (
     <>
     <Announcement />
@@ -77,9 +92,15 @@ const Register = () => {
       <Wrapper>
         <Title>CREATE AN ACCOUNT</Title>
         <Form className="App" onSubmit={handleSubmit(onSubmit)}>
+        <Input placeholder="Firstname" type="text" {...register("firstname", { required: true })}/>
+          {errors.firstname && <span style={{ color: "red" }}>
+           *Firstname* is mandatory </span>}
+        <Input placeholder="Lastname" type="text" {...register("lastname", { required: true })}/>
+          {errors.lastname && <span style={{ color: "red" }}>
+           *Lastname* is mandatory </span>}
           <Input placeholder="Username" type="text" {...register("username", { required: true })}/>
           {errors.username && <span style={{ color: "red" }}>
-        *Username* is mandatory </span>}
+           *Username* is mandatory </span>}
          
           <Input placeholder="Email" type="email" {...register("email", { required: true })} />
         {errors.email && <span style={{ color: "red" }}>
@@ -87,7 +108,9 @@ const Register = () => {
           <Input placeholder="Password" type="password" {...register("password", { required: true })} />
         {errors.password && <span style={{ color: "red" }}>
         *Password* is mandatory </span>}
- 
+        <Input placeholder="Mobilenumber" type="text" {...register("mobilenumber", { required: true })} />
+        {errors.password && <span style={{ color: "red" }}>
+        *Mobilenumber* is mandatory </span>}
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>

@@ -7,11 +7,13 @@ import {
   getTotals,
   removeFromCart,
 } from "../slices/cartSlice";
-
+//import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Authentication from "../storage/Authentication";
+import Footer from "./Footer";
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
@@ -40,14 +42,40 @@ const Cart = () => {
     navigate("/productdetails/" + product);
     //console.log(userData);
   }
+  const id = Authentication.isLoggedInUserId();
+  console.log(id);
+  
+  const order = async(cart) => {
+    const cartitems = {
+      cartItems: localStorage.getItem("cartItems")
+        ? JSON.parse(localStorage.getItem("cartItems"))
+        : [],
+    };
+    await fetch('http://localhost:8080/api/order/myorder', {
+      method: 'POST',
+      body: JSON.stringify({
+        userid: id,
+       cartTotalQuantity: cart.cartTotalQuantity,
+        totalAmount: cart.cartTotalAmount,
+       
+        cartItems:cartitems.cartItems,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+       
+      })
+      .catch((err) => {
+        console.log(err.message);
+        alert(err.message);
+      });
+      handleClearCart();
+  };
 
-  const order = (cart) => {
-   // const userData = JSON.parse(localStorage.getItem(data.email));
-    localStorage.setItem(cart, JSON.stringify({
-      id: cart.id,
-    }));
-    console.log(JSON.parse(localStorage.getItem(cart)));
-  }
   return (
     <>
       <Header />
@@ -81,7 +109,7 @@ const Cart = () => {
 
                     <div className="cart-product">
 
-                      <img src={cartItem.image} alt={cartItem.title} onClick={() => productDetail(cartItem.id)}/>
+                      <img src={cartItem.image} alt={cartItem.title} onClick={() => productDetail(cartItem.id)} />
                       <div>
                         <h3 >{cartItem.title}</h3>
                         <p>{cartItem.description}</p>
@@ -139,6 +167,7 @@ const Cart = () => {
           </div>
         )}
       </div>
+      <Footer/>
     </>
   );
 };

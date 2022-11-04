@@ -54,6 +54,9 @@ const Header = () => {
             <Link to="/order">My Order</Link>
           </MenuItem>
           <MenuItem>
+            <Link to="/profile">My Profile</Link>
+          </MenuItem>
+          <MenuItem>
             <Link to="/logout">Logout</Link>
           </MenuItem>
         </Right>
