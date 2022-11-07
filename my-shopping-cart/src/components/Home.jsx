@@ -5,11 +5,9 @@ import Products from "./Products";
 import Slider from "./Slider";
 import Announcement from "./Announcement";
 import Footer from "./Footer";
-//import Home from './Home';
+
 import Navbar from "./Navbar";
-/*import Announcement from "./Announcement";
-import Navbar from "./Navbar";
-import Footer from "./Footer";*/
+
 
 const Home = () => {
   return (

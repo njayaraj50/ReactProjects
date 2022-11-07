@@ -11,13 +11,11 @@ const store = configureStore({
     allProducts: productsReducer,
   product: selectedProductsReducer,
     cart: cartReducer,
-    //[productsApi.reducerPath]: productsApi.reducer,
+    
   },
-  //middleware: (getDefaultMiddleware) =>
-    //getDefaultMiddleware().concat(productsApi.middleware),
+  
 });
 
-//store.dispatch(productsFetch());
 store.dispatch(getTotals());
 ReactDOM.render(
   <React.StrictMode>

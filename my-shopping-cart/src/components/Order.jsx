@@ -17,15 +17,7 @@ const Order = () => {
   console.log(cart);
   const id = Authentication.isLoggedInUserId();
   console.log(id);
-  /*const fetchProductDetail = async (id) => {
-    const response = await axios
-      //.get(`https://fakestoreapi.com/products/${id}`)
-      .get("http://localhost:8080/api/order/vieworder?userid="+id)
-      .catch((err) => {
-        console.log("Err: ", err);
-      });
-   console.log(response);
-  };*/
+ 
   useEffect(() => {
     fetch("http://localhost:8080/api/order/vieworder?userid=" + id,
       { "method": "GET", })

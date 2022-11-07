@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { setProducts } from "../redux/actions/productActions";
 import ProductComponent from "./ProductComponent";
 import Footer from "./Footer";
-//import Navbar from "./Navbar/Navbar";
+
 const ProductPage = () => {
   const products = useSelector((state) => state.allProducts.products);
   const dispatch = useDispatch();
   const fetchProducts = async () => {
     const response = await axios
-      //.get("https://fakestoreapi.com/products")
+      
       .get("http://localhost:8080/api/product/all")
       .catch((err) => {
         console.log("Err: ", err);

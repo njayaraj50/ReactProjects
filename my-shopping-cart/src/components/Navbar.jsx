@@ -1,16 +1,10 @@
-//import { Badge } from "@material-ui/core";
+
 import { Search } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link} from "react-router-dom";
-//import Register from "./Register";
-//import Login from "./Login";
-/*import Home from "./Home";
-import LoginJson from "./LoginJson";
-//import LoginAuth from "./LoginAuth";
-import ProductList from "./ProductList";
-//import Index from "./Index";*/
+
 
 
 const Container = styled.div`

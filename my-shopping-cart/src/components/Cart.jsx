@@ -7,7 +7,7 @@ import {
   getTotals,
   removeFromCart,
 } from "../slices/cartSlice";
-//import axios from "axios";
+
 import { Link, useNavigate } from "react-router-dom";
 import Header from "./Header";
 import { ToastContainer } from "react-toastify";
@@ -38,9 +38,9 @@ const Cart = () => {
   };
   const navigate = useNavigate();
   const productDetail = (product) => {
-    //const userData = JSON.parse(localStorage.getItem(product));
+   
     navigate("/productdetails/" + product);
-    //console.log(userData);
+   
   }
   const id = Authentication.isLoggedInUserId();
   console.log(id);

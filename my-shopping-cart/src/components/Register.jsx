@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import Announcement from "./Announcement";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-//import Authentication from "../storage/Authentication";
+
 import axios from "axios";
-//import { toast } from "react-toastify";
+
 import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`

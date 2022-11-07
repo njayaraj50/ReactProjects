@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import {getTotals} from "../slices/cartSlice";
 import { useEffect,useState } from "react";
-//import axios from "axios";
+
 import { Link} from "react-router-dom";
 import Header from "./Header";
 import { ToastContainer } from "react-toastify";

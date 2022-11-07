@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
-//import { useForm } from "react-hook-form";
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import ProductList from "./ProductList";*/
+
 import Authentication from "../storage/Authentication";
 import Announcement from "./Announcement";
 import Footer from "./Footer";
@@ -89,15 +89,7 @@ const LoginJson = () => {
         console.log(err.message);
       });
   };
-  /*const cart = useSelector((state) => state.cart);
-  const getUserId = (data) => {
-    console.log(data);
-    localStorage.setItem(data, JSON.stringify({ 
-        id: data.id, 
-    }));
-    console.log(JSON.parse(localStorage.getItem(data)));
-  };
-  */
+ 
   const navigate = useNavigate();
   const [login, setLogin] = useState([]);
   if ((login.some(user => user.username === username.valueOf())) && (login.some(pass => pass.password === password.valueOf()))) {

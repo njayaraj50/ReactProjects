@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "./Header";
 import { useEffect } from "react";
-//import { useNavigate } from "react-router";
+
 import { addToCart, getTotals, } from "../slices/cartSlice";
-//import Footer from "./Footer";
+
 
 const ProductComponent = () => {
-  //const { items: products, status } = useSelector((state) => state.products);
+  
   const dispatch = useDispatch();
-  //const navigate = useNavigate();
+  
   const products = useSelector((state) => state.allProducts.products);
   const cart = useSelector((state) => state.cart);
 
@@ -26,13 +26,12 @@ console.log(cart);
       id: product.id, 
    }));
    console.log(JSON.parse(localStorage.getItem(product)));
-    //navigate("/addcart");
+   
   };
   
     
   const renderList = products.map((product) => {
-    //product.quantity=1;
-    //const { id, title, image, price, category } = product;
+    
     
     return (
 

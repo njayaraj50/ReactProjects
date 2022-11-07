@@ -1,6 +1,5 @@
 import React from 'react'
 import Home from './components/Home';
-//import Index from './components/Index';
 import {
   BrowserRouter as Router,
   Routes,
@@ -37,9 +36,6 @@ function App() {
  </Router>
   </>
     
-    
-    
-
   )
 }
 
